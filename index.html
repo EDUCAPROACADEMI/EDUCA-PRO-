@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="2hlJFv0Z5D0PmoefY_A_96CJil0LWhNQQyvU6Yf0RU4" />
+
+    <title>EDUCA PRO+ | Plataforma Virtual de Aprendizaje</title>
+    <meta name="description" content="Academia ANYINSAN dirigida por el maestro Frank Hoyos. Kung Fu, Tai Chi, Taekwondo y artes marciales. Disciplina, respeto y tradición." />
+    <meta name="keywords" content="ANYINSAN, artes marciales, kung fu, tai chi, taekwondo, academia, Frank Hoyos" />
+    <meta name="author" content="Frank Hoyos">
+
+    <style>
+        :root {
+            --bg-color: #000000; 
+            --primary: #f3f70d;
+            --primary-hover: #d40e0e;
+            --secondary: #ee1414;
+            --text-color: #ec1010;
+            --text-soft: #f1ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--bg-color);
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #000000; 
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 500px;
+            background: url("") center/contain no-repeat;
+            opacity: 0.15; 
+            transform: translate(-50%, -50%);
+            animation: logoFloat 6s ease-in-out infinite alternate;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes logoFloat {
+            from {
+                transform: translate(-50%, -48%) scale(1);
+            }
+            to {
+                transform: translate(-50%, -52%) scale(1.02);
+            }
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            text-align: center;
+            max-width: 700px;
+            padding: 50px 40px;
+            border-radius: 24px;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #07bfec;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            font-size: 1.35rem;
+            color: var(--text-soft);
+            margin-bottom: 35px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 16px 55px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            background: var(--primary);
+            color: #e4d077;
+            text-decoration: none;
+            transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(173, 159, 166, 0.4);
+            letter-spacing: 2px;
+            border: 1px solid rgba(247, 14, 14, 0.1);
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+            background: var(--primary-hover);
+            box-shadow: 0 12px 30px rgba(182, 137, 150, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        @media(max-width:768px){
+            .hero::before {
+                width: 320px;
+                height: 320px;
+                opacity: 0.18; 
+            }
+
+            .hero-content {
+                margin: 20px;
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            .button {
+                padding: 14px 40px;
+                width: 100%;
+                max-width: 260px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-content">
+        <h1>EDUCA PRO+</h1>
+        <p>Plataforma Virtual de Aprendizaje</p>
+        <a href="menuacademia.html" class="button">INICIO</a>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+
+const icons = ["📚","🧠","🎓","💡","📝","💻","📖","🌎","📚","🧠","🎓","💡","📝","💻","📖","🌎"];
+
+class FloatingIcon{
+    constructor(){
+        this.reset();
+    }
+
+    reset(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 16 + 16;
+        this.icon = icons[Math.floor(Math.random() * icons.length)];
+        this.dx = (Math.random() - 0.5) * 0.6;
+        this.dy = (Math.random() - 0.5) * 0.6;
+        this.opacity = Math.random() * 0.3 + 0.2; 
+    }
+
+    draw(){
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.font = `${this.size}px Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(this.icon, this.x, this.y);
+        ctx.restore();
+    }
+
+    update(){
+        this.x += this.dx;
+        this.y += this.dy;
+
+        if(this.x < -30) this.x = canvas.width + 30;
+        if(this.x > canvas.width + 30) this.x = -30;
+
+        if(this.y < -30) this.y = canvas.height + 30;
+        if(this.y > canvas.height + 30) this.y = -30;
+
+        this.draw();
+    }
+}
+
+let particles = [];
+for(let i = 0; i < 35; i++){ 
+    particles.push(new FloatingIcon());
+}
+
+function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => p.update());
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize", resizeCanvas);
+</script>
+</body>
+</html>
+
