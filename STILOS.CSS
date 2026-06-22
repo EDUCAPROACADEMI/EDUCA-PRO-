@@ -216,3 +216,256 @@ main {
     background: rgba(255, 107, 0, 0.1);
     box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
 }
+
+
+.welcome-text h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text-white);
+}
+
+.welcome-text h2 span {
+    color: var(--purple-neon);
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* Contenedor de la tabla responsiva */
+.tabla-tarifas-container {
+    width: 100%;
+    overflow-x: auto;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
+.tabla-tarifas {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.tabla-tarifas th, 
+.tabla-tarifas td {
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tabla-tarifas th {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.tabla-tarifas tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-tarifas td {
+    color: var(--text-gray);
+}
+
+.tabla-tarifas td strong {
+    color: var(--text-white);
+}
+
+
+.text-cyan {
+    color: var(--cyan-neon) !important;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.text-purple {
+    color: var(--purple-neon) !important;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.text-orange {
+    color: var(--orange-neon) !important;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+}
+
+
+.formulario-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-inscripcion {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(7, 10, 19, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+
+.form-group select option {
+    background: #111827;
+    color: var(--text-white);
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--cyan-neon);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    background: rgba(0, 242, 254, 0.02);
+}
+
+
+.btn-enviar {
+    margin-top: 10px;
+    padding: 16px;
+    background: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--purple-neon);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+}
+
+.btn-enviar:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: var(--cyan-neon);
+    color: var(--text-white);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+    transform: translateY(-2px);
+}
+
+
+.btn-contacto-link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    word-break: break-word; 
+}
+
+
+.cyan:hover .btn-contacto-link {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--cyan-neon);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.purple:hover .btn-contacto-link {
+    background: rgba(168, 85, 247, 0.1);
+    border-color: var(--purple-neon);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.orange:hover .btn-contacto-link {
+    background: rgba(255, 107, 0, 0.1);
+    border-color: var(--orange-neon);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+}
+
+
+.lista-detalles {
+    list-style: none;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lista-detalles li {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.4;
+}
+
+
+.lista-detalles li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.orange .lista-detalles li::before { color: var(--orange-neon); }
+.cyan .lista-detalles li::before { color: var(--cyan-neon); }
+.purple .lista-detalles li::before { color: var(--purple-neon); }
+
+
+.btn-inscripcion-accion {
+    display: inline-block;
+    text-decoration: none;
+    padding: 16px 40px;
+    background: transparent;
+    color: var(--text-white);
+    border: 2px solid var(--cyan-neon);
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+.btn-inscripcion-accion:hover {
+    background: rgba(0, 242, 254, 0.1);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.4);
+    transform: scale(1.05);
+}
